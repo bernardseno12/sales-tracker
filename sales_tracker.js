@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 default: console.log('Please Specify Which Route');
             }
         },
-        ClearForm: ()=> {
+        ClearForm: (e)=> {
             const self = Sales.config;
 
             self.in_date.value = '';
