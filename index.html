@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Tracker</title>
+
+    <link rel="stylesheet" href="sales_tracker.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="div-app-container">
+    
+        <div id="div-view">
+            <div id="div-header">
+                <div style="display: flex; align-items: center;">
+                    <input type="text" placeholder="Search..." class="input-style">
+                </div>
+                
+                <div>
+                    <nav id="div-sidebar">
+                        <ul class="nav-links">
+                            <li><a href="#div-profile">Dashboard</a></li>
+                            <li><a href="#sec-form">Form</a></li>
+                            <li><a href="#sec-notes">Notes</a></li>
+                            <li><a href="#sec-contact">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="div-profile">
+                    <img src="./sales_assets/notifications.svg" alt="Notif Icon" class="img-icon">
+                    <img src="./sales_assets/acc.jpg" alt="Prof Img" id="img-prof">
+                    <h2 style="margin-top: 1rem;">James Dean</h2>
+                </div>
+            </div>
+
+            <section id="sec-greetings">
+                <div>
+                    <h3 style="margin-bottom: 0;">Good morning, James</h3>
+                    <p>Here's what's happening with your store today.</p>
+                </div>
+                
+                <div id="div-profile">
+                    <div>
+                        <input type="date" placeholder="Enter Date" class="input-style">
+                        <button type="button" class="btn-style-export">Export</button>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <section id="sec-numbers">
+                <div class="div-number-style">
+                    <p>Product Sales</p>
+                    <h2>$22,892</h2>
+                    <p>26% For Today</p>
+                </div>
+                
+                <div class="div-number-style">
+                    <p>Manager Sales</p>
+                    <h2>$22,892</h2>
+                    <p>26% For Today</p>
+                </div>
+
+                <div class="div-number-style">
+                    <p>Agent Sales</p>
+                    <h2>$22,892</h2>
+                    <p>26% For Today</p>
+                </div>
+            </section>
+
+            <div id="div-graph-section">
+                <section id="sec-graph">
+                    <h3>Product Trend</h3>
+                    <div>
+                        <canvas id="can-sales-chart"></canvas>
+                    </div>
+                </section>
+    
+                <section id="sec-graph-manager">
+                    <h3>Manager Trend</h3>
+                    <div>
+                        <canvas id="can-sales-chart-manager"></canvas>
+                    </div>
+                </section>
+
+                <section id="sec-graph-agent">
+                    <h3>Agents' Sales Trend</h3>
+                    <div>
+                        <canvas id="can-sales-chart-agent"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <section id="sec-form">
+                <div id="div-banner">
+                    <h1 style="color: white;"><span style="color: rgb(151, 180, 255);">Sales</span> Form</h1>
+                    <h3 style="color: white;"><span style="color: rgb(151, 180, 255);">Ensure</span> That We Deliver Our <span style="color: rgb(151, 180, 255);">Quality</span> Service</h3>
+                </div>
+                
+                <div id="div-form-container">
+                    <div id="div-form">
+                        <div id="div-in">
+                            <form id="form-sales" autocomplete="off">
+                                <input type="date" placeholder="Date" class="in-style" id="in-date">
+                                <input type="number" placeholder="Employee ID" class="in-style" id="in-empid">
+                                <input type="text" placeholder="First Name" class="in-style" id="in-fname">
+                                <input type="text" placeholder="Last Name" class="in-style" id="in-lname">
+                                <input type="number" placeholder="Order Number" class="in-style" id="in-ordernum">
+                                <select name="sel-manager" id="sel-manager" class="in-style">
+                                    <option value="0">Manager</option>
+                                    <option value="John Doe">John Doe</option>
+                                    <option value="Jane Doe">Jane Doe</option>
+                                </select>
+                                <input type="text" placeholder="Manager" class="in-style" id="in-manager" style="pointer-events: none;">
+                                <select name="sel-product" id="sel-product" class="in-style">
+                                    <option value="0">Product</option>
+                                    <option value="iPhone">iPhone</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="Oppo">Oppo</option>
+                                    <option value="Nokia">Nokia</option>
+                                </select>
+                                <input type="text" placeholder="Product" class="in-style" id="in-product" style="pointer-events: none;">
+            
+                                <div class="div-btn">
+                                    <button type="button" id="btn-sub" class="btn-style" data-action="create">SUBMIT</button>
+                                    <button type="button" id="btn-clr" class="btn-style">CLEAR</button>
+                                </div>  
+                            </form>
+                        </div>
+                    </div>
+            
+                    <div id="div-table-container">
+                        <table id="tbl-tbl">
+                            <thead></thead>
+                            <tbody id="tbl-tbody">
+                                <tr class="tr-style">
+                                    <th>DATE</th>
+                                    <th>EMP ID</th>
+                                    <th>EMP FULLNAME</th>
+                                    <th>ORDER#</th>
+                                    <th>MANAGER</th>
+                                    <th>PRODUCT</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="sec-notes">
+                <div id="div-banner-notes">
+                    <h1 style="color: white;"><span style="color: rgb(151, 180, 255);">Your</span> Notes</h1>
+                    <h3 style="color: white;"><span style="color: rgb(151, 180, 255);">Note:</span> Double Click The Note to <span style="color: rgb(151, 180, 255);">Delete</span> it</h3>
+                </div>
+
+                <div id="div-app">
+                    <button type="button" class="btn-add">+</button>
+                </div>
+            </section>
+
+            <section id="sec-contact">
+                <div id="div-sales-app">
+                    <div id="div-app-store">
+                        <div>
+                            <h1>
+                                Download The App Now
+                            </h1>
+                        </div>
+            
+                        <div>
+                            <p>This app is now available in both app store and google store. intall it for free and login with your sales tracker acc. Track your stores' status quo anywhere you go. Download now!</p>  
+                        </div>
+        
+        
+                        <div id="div-app-img">
+                            <div>
+                                <img src="./sales_assets/google-store.png" alt="Google Store" class="img-store">
+                            </div>
+                            <div>
+                                <img src="./sales_assets/app-store.png" alt="App Store" class="img-store">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="div-app-desktop">
+                        <img src="./sales_assets/sales-app.jpg" alt="Sales App">
+                    </div>
+                </div>
+
+                <div id="div-contact">
+                    <div class="div-contact-panel" id="div-contact-id">
+                        <p><span style="font-weight: bold;">Sales</span> Tracker</p>
+                        <p id="p-offer">A Business Men's Fried<br>
+                        Track your reveneu and your store's current trend for a healthy business.<br>
+                        Set goals and action plans based on your sales data for a structured solution
+                        </p>
+                        <p class="p-info-general">(123) 456 - 7890</p>
+                        <p class="p-info-general">carrental@gmail.com</p>
+                    </div>
+        
+                    <div class="div-contact-panel" id="div-branch-id">
+                        <h3>COMPANY</h3>
+                        <p class="p-info-general">Philippines</p>
+                        <p class="p-info-general">Careers</p>
+                        <p class="p-info-general">Mobile</p>
+                        <p class="p-info-general">Blog</p>
+                    </div>
+        
+                    <div class="div-contact-panel" id="div-sched-id">
+                        <h3>WORKING HOURS</h3>
+                        <p class="p-info-general">Mon - Fri 8:00AM - 9:00AM</p>
+                        <p class="p-info-general">Saturdays 10:00AM - 7PM</p>
+                        <p class="p-info-general">Sundays Closed</p>
+                    </div>
+        
+                    <div class="div-contact-panel" id="div-subs-id">
+                        <h3>REPORT ISSUES</h3>
+                        <p>Subscribe your email address for <br>
+                        bugs and issues of this app.
+                        </p>
+                        <input type="text" placeholder="Enter Email Address" class="input-style input-email">
+                        <button class="btn-style-sub btn-color-1">SUBMIT</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script type="module" src="sales_tracker.js"></script>
+    <script src="sales_tracker_notes.js"></script>
+</body>
+</html>
